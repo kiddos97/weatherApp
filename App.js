@@ -1,5 +1,5 @@
 import { SafeAreaView, Text, View } from "react-native";
- import WeatherScree from "./app/screens/weatherScreen";
+import WeatherScreen from "./app/assets/screens/WeatherScreen";
 
 
 export default function App() {
