@@ -5,7 +5,7 @@ import WeatherScreen from "./app/screens/weatherScreen";
 export default function App() {
   return (
  
-    <WeatherScreen/>
+  <WeatherScreen/>
   );
 }
 

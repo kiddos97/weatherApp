@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import Screen from '../../components/Screen/screen';
+import { SafeAreaView, Text, View } from "react-native";
+import Sc from '../../components/Screen/screen';
 
 const WeatherScreen = () => {
   return (
