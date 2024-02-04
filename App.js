@@ -1,20 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, Text, View } from "react-native";
+import WeatherScreen from "./app/screens/weatherScreen";
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>hello hi</Text>
-      <StatusBar style="auto" />
-    </View>
+ 
+    <WeatherScreen/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
