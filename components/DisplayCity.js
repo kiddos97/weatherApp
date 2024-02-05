@@ -13,6 +13,10 @@ const DisplayCity = () => {
         <Text style={styles.weatherText}>
             Sunny
         </Text>
+        <View style={styles.tempContainer}>
+            <Text style={styles.tempText}>HI: 75</Text>
+            <Text style={styles.tempText}>Low: 60</Text>
+        </View>
     </View>
   </SafeAreaView>
   )
@@ -38,7 +42,20 @@ const styles = StyleSheet.create({
     weatherText:{
         fontSize:15,
         textAlign:'center',
-        color:color.white
+        color:color.white,
+        fontWeight:'bold'
+    },
+    tempContainer:{
+        flexDirection:'row',
+       justifyContent:'space-evenly'
+    },
+    tempText:{
+        color:color.white,
+        textAlign:'center',
+        marginVertical:10,
+        fontSize: 15,
+        fontWeight:'bold'
+
     }
 })
 export default DisplayCity
