@@ -11,13 +11,15 @@ const SearchCity = () => {
   )
 }
 const styles = StyleSheet.create({
+   
     container:{
         marginVertical: 20,
         borderRadius: 35,
-        backgroundColor:'rgba(0, 0, 0, 0)',
-        padding:15,
-        width: '100%',
-        flexDirection:'row'
+        backgroundColor:'red',
+        padding:10,
+        flexDirection:'row',
+        borderColor:'black',
+        borderWidth:1
         
     },
     textinput:{
