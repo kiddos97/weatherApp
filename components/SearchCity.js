@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, View, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { useState } from 'react';
+import color from '../config/color';
 
 const SearchCity = () => {
 
@@ -37,13 +38,13 @@ const styles = StyleSheet.create({
         padding:10,
         backgroundColor:'rgba(0,0,0,0)',
         flexDirection:'row',
-        borderColor:'white',
-        borderWidth:1,
+        borderColor:color.white,
+        borderWidth:2,
         justifyContent:'space-between'
         
     },
     textinput:{
-        color:'white',
+        color:color.white,
         fontSize: 18,
     },
     iconContainer: {
