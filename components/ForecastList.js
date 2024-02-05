@@ -58,7 +58,7 @@ const ForecastList = () => {
              weather ={ item.weather}
               HiTemp={item.HiTemp} 
               lowTemp ={ item.lowTemp}
-              width={170}
+              width={160}
             />
         )}
         horizontal

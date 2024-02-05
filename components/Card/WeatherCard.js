@@ -6,7 +6,7 @@ import color from '../../config/color';
 const WeatherCard = ({Day, weather, HiTemp, lowTemp, width}) => {
   return (
   
-    <SafeAreaView>
+ 
         <View style={[styles.cardContainer,{width}]}>
             <Text style={styles.headingText}>{Day}</Text>
             <View style={styles.iconContainer}>
@@ -18,16 +18,16 @@ const WeatherCard = ({Day, weather, HiTemp, lowTemp, width}) => {
                 <Text style={styles.text}>{'Low: '+ lowTemp}</Text>
             </View>
         </View>
-    </SafeAreaView>
+ 
   )
 }
 
 const styles = StyleSheet.create({
     cardContainer:{
-        borderRadius:30,
+        borderRadius:35,
         borderColor:color.white,
         borderWidth:2,
-        padding:20,
+        padding:10,
         backgroundColor:'rgba(0,0,0,0.5)',
         marginRight:20,
     },

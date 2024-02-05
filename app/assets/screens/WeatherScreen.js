@@ -15,7 +15,7 @@ const WeatherScreen = () => {
         source={require('../../assets/background.jpg')}
         blurRadius={10}
         >
-                   <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.searchContainer}>
                 <SearchCity/>
                 </View>
@@ -43,9 +43,6 @@ const styles = StyleSheet.create({
     searchContainer:{
         padding:40
     },
-    scrollContainer: {
-        flexGrow: 1,
-      },
     
 })
 
