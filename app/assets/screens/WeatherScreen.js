@@ -5,6 +5,7 @@ import SearchCity from '../../../components/SearchCity'
 import DisplayCity from '../../../components/DisplayCity'
 import ForecastList from '../../../components/ForecastList'
 import color from '../../../config/color'
+import WeatherDescription from '../../../components/WeatherDescription'
 
 const WeatherScreen = () => {
   return (
@@ -21,11 +22,10 @@ const WeatherScreen = () => {
                 </View>
                     <DisplayCity/>
                     <View>
-             
                         <ForecastList/>
-                     
                         </View>
-                        </ScrollView>
+                            <View style={styles.container}><WeatherDescription/></View>
+                </ScrollView>
                </ImageBackground>
              
      
@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
     searchContainer:{
         padding:40
     },
+    container:{
+        padding:20
+    }
     
 })
 
