@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
 import color from '../config/color'
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 const DisplayCity = () => {
   return (
   <SafeAreaView>
@@ -10,6 +10,9 @@ const DisplayCity = () => {
                 Austin, Texas
         </Text>
         <Text style={styles.degrees}>60</Text>
+        <View style={styles.iconContainer}>
+            <Ionicons name="sunny" size={50} color="orange"/>
+        </View>
         <Text style={styles.weatherText}>
             Sunny
         </Text>
@@ -56,6 +59,10 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight:'bold'
 
-    }
+    },  
+     iconContainer:{
+        alignItems:'center',
+        marginVertical:10
+    },
 })
 export default DisplayCity

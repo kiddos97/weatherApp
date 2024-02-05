@@ -7,7 +7,7 @@ import WeatherCard from "./components/Card/WeatherCard";
 
 export default function App() {
   return (
-    <WeatherCard/>
+    <WeatherScreen/>
   );
 }
 

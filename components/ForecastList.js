@@ -1,7 +1,7 @@
 import React from 'react'
-import { FlatList, View } from 'react-native'
+import { FlatList, View, StyleSheet } from 'react-native'
 
-
+import WeatherCard from './Card/WeatherCard'
 
 const Weather = [
 
@@ -53,11 +53,36 @@ const Weather = [
 ]
 
 const ForecastList = () => {
+
+    //const [weather, setWeather] = useState([])
   return (
-    <View>
-        <FlatList/>
+    <View style={styles.screen}>
+        <FlatList
+        data={Weather}
+        keyExtractor={Weather =>  Weather.id}
+        renderItem={({ item }) => (
+            <WeatherCard
+            Day={item.Day}
+             weather ={ item.weather}
+              HiTemp={item.HiTemp} 
+              lowTemp ={ item.lowTemp}
+              width={170}
+            />
+        )}
+        horizontal
+        contentContainerStyle={styles.list}
+        />
     </View>
   )
 }
-
+const styles = StyleSheet.create({
+    screen:{
+        padding: 10,
+        paddingTop:40,
+        
+    },
+    list:{
+        paddingHorizontal:20
+    }
+})
 export default ForecastList
