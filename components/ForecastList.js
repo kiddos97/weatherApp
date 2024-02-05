@@ -1,5 +1,6 @@
 import React from 'react'
-import { FlatList, View, StyleSheet } from 'react-native'
+import { FlatList, View, StyleSheet, Text } from 'react-native'
+import color from '../config/color'
 
 import WeatherCard from './Card/WeatherCard'
 
@@ -11,8 +12,6 @@ const Weather = [
         weather: "Sunny",
         HiTemp: 75,
         lowTemp: 60
-
-
 },
 {
     id:2,
@@ -20,8 +19,6 @@ const Weather = [
     weather: "Sunny",
     HiTemp: 75,
     lowTemp: 60
-
-
 },
 {
     id:3,
@@ -29,8 +26,6 @@ const Weather = [
     weather: "Sunny",
     HiTemp: 75,
     lowTemp: 60
-
-
 },
 {
     id:4,
@@ -38,8 +33,6 @@ const Weather = [
     weather: "Sunny",
     HiTemp: 75,
     lowTemp: 60
-
-
 },
 {
     id:5,
@@ -47,8 +40,6 @@ const Weather = [
     weather: "Sunny",
     HiTemp: 75,
     lowTemp: 60
-
-
 },
 ]
 
@@ -57,6 +48,7 @@ const ForecastList = () => {
     //const [weather, setWeather] = useState([])
   return (
     <View style={styles.screen}>
+         <Text style={styles.forecastHeading}> 5 - Day Forecast</Text>
         <FlatList
         data={Weather}
         keyExtractor={Weather =>  Weather.id}
@@ -70,7 +62,6 @@ const ForecastList = () => {
             />
         )}
         horizontal
-        contentContainerStyle={styles.list}
         />
     </View>
   )
@@ -81,8 +72,13 @@ const styles = StyleSheet.create({
         paddingTop:40,
         
     },
-    list:{
-        paddingHorizontal:20
-    }
+    forecastHeading:{
+        textAlign:'center',
+        color:color.white,
+        fontSize:20,
+        marginVertical:20,
+        fontWeight:'bold'
+      }
+
 })
 export default ForecastList

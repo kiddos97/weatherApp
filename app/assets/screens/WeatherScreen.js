@@ -15,15 +15,15 @@ const WeatherScreen = () => {
         source={require('../../assets/background.jpg')}
         blurRadius={10}
         >
+                   <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.searchContainer}>
                 <SearchCity/>
                 </View>
-               
                     <DisplayCity/>
-                    <ScrollView contentContainerStyle={styles.scrollContainer}>
-                    <View style={styles.ForecastContainer}>
-                        <Text style={styles.forecastHeading}> 5 - Day Forecast</Text>
+                    <View>
+             
                         <ForecastList/>
+                     
                         </View>
                         </ScrollView>
                </ImageBackground>
@@ -43,19 +43,10 @@ const styles = StyleSheet.create({
     searchContainer:{
         padding:40
     },
-    ForecastContainer:{
-        paddingHorizontal:20
-    },
     scrollContainer: {
         flexGrow: 1,
       },
-      forecastHeading:{
-        textAlign:'center',
-        color:color.white,
-        fontSize:20,
-        marginVertical:20,
-        fontWeight:'bold'
-      }
+    
 })
 
 export default WeatherScreen

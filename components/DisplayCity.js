@@ -27,8 +27,7 @@ const DisplayCity = () => {
 const styles = StyleSheet.create({
     container:{
         padding: 10,
-        marginVertical:10,
-        paddingTop:30
+        paddingTop:20
     },
     cityText:{
         fontSize:30,
@@ -62,7 +61,6 @@ const styles = StyleSheet.create({
     },  
      iconContainer:{
         alignItems:'center',
-        marginVertical:10
     },
 })
 export default DisplayCity
