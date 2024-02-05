@@ -5,8 +5,11 @@ import { SafeAreaView, Text, View, StyleSheet, Platform, StatusBar, ImageBackgro
 const WeatherScreen = () => {
   return (
 
-     
-           <ImageBackground style={styles.screen} source={require('../../assets/background.jpg')}>
+<ImageBackground 
+    style={styles.screen} 
+    source={require('../../assets/background.jpg')}
+    blurRadius={10}
+    >
            </ImageBackground>
      
  
