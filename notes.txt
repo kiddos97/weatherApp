@@ -1,0 +1,79 @@
+<View style={styles.container}>
+    <View style={styles.windheader}>
+        <Feather name="wind" size={20}/>
+        <Text style = {styles.headingText}>
+            Wind
+        </Text>
+    </View>
+    <View style ={ styles.windspeed}>
+        <View style ={styles.containerSpeed}>
+            <Text style={styles.speed}>
+                13
+            </Text>
+            </View>
+        <View>
+            <Text style={styles.text}>MPH</Text>
+            <Text style={styles.text}>Wind</Text>
+        </View>
+    </View>
+    <View style={styles.space}/>
+    <View style ={ styles.windspeed}>
+        <View style ={styles.containerSpeed}>
+            <Text style={styles.speed}>
+                27
+            </Text>
+            </View>
+        <View>
+            <Text style={styles.text}>MPH</Text>
+            <Text style={styles.text}>Gust</Text>
+        </View>
+    </View>
+    <View style={styles.imageContainer}>
+          <Image
+            source={require('../app/assets/compass.png')}
+            style={{ width: 100, height: 100 }}
+          />
+        </View>
+    </View>
+
+    const styles = StyleSheet.create({
+    container:{
+        borderColor:'black',
+        borderWidth:2,
+        borderRadius:35,
+        flexDirection: 'column', // Set flexDirection to row to arrange items horizontally
+        alignItems: 'center', // Center items vertically
+
+    },
+    containerSpeed:{
+        marginRight:20
+    },
+    headingText:{
+        fontSize:15,
+        fontWeight:'bold',
+        marginLeft:10
+    },
+    windspeed:{
+        flexDirection:'row',
+        marginBottom:10
+        
+    },
+    speed:{
+        fontSize:35
+    },
+    space:{
+        height:20
+    },
+    text:{
+        fontSize:15,
+        fontWeight:'bold'
+    },
+    windheader:{
+        flexDirection:'row',
+        marginRight:10,
+        marginVertical:20
+    },
+    imageContainer:{
+       marginLeft:'auto'
+    }
+})

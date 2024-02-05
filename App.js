@@ -8,7 +8,7 @@ import WindDescription from "./components/WindDescription";
 
 export default function App() {
   return (
-  <WindDescription/>
+  <WeatherScreen/>
   );
 }
 
