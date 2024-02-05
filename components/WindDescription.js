@@ -7,7 +7,7 @@ const WindDescription = () => {
   return (
      <View style={styles.container}>
      <View style={styles.windheader}>
-        <Feather style={styles.icon} name="wind" size={25}/>
+        <Feather style={styles.icon} name="wind" size={25} color={color.white}/>
         <Text style = {styles.headingText}>
             Wind
         </Text>
@@ -53,10 +53,11 @@ const styles = StyleSheet.create({
     container: {
       flexDirection: 'row', // Primary axis
       padding:20,
-      borderColor:'black',
+      borderColor:color.white,
       borderWidth:2,
       borderRadius:35,
-      justifyContent:'space-between'
+      justifyContent:'space-between',
+      backgroundColor:'rgba(0,0,0,0.5)'
     },
     row: {
       flexDirection: 'row', // Align items horizontally
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     },
     windheader:{
         flexDirection:'row',
-        marginRight:10,
+        marginRight:20,
         marginVertical:20
     },
     windspeed:{
@@ -81,13 +82,17 @@ const styles = StyleSheet.create({
     headingText:{
         fontSize:15,
         fontWeight:'bold',
-        marginLeft:10
+        marginLeft:10,
+        color:color.white
     },
     containerSpeed:{
         marginRight:20
     },
     speed:{
-        fontSize:35
+        fontSize:35,
+        color:color.white,
+        marginBottom:10,
+        fontWeight:'bold'
     },
     imageContainer:{
       justifyContent:'center',
@@ -95,6 +100,8 @@ const styles = StyleSheet.create({
      },
      text:{
         fontSize:15,
+        fontWeight:'bold',
+        color:color.white,
         fontWeight:'bold'
     },
     icon:{

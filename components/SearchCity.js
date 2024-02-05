@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         marginVertical: 30,
         borderRadius: 35,
         padding:10,
-        backgroundColor:'rgba(0,0,0,0)',
+        backgroundColor:'rgba(0,0,0,0.5)',
         flexDirection:'row',
         borderColor:color.white,
         borderWidth:2,
