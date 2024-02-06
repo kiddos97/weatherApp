@@ -7,6 +7,7 @@ import ForecastList from '../../../components/ForecastList'
 import color from '../../../config/color'
 import WeatherDescription from '../../../components/WeatherDescription'
 import WindDescription from '../../../components/WindDescription'
+import VisiblityHumidity from '../../../components/VisiblityHumidity'
 
 const WeatherScreen = () => {
   return (
@@ -31,6 +32,9 @@ const WeatherScreen = () => {
                                 <View style={styles.windContainer}>
                                     <WindDescription/>
                                     </View>
+                                    <View style={styles.container}>
+                                <VisiblityHumidity/>
+                                </View>
                 </ScrollView>
                </ImageBackground>
              

@@ -21,6 +21,7 @@ const WeatherDescription = () => {
             <Text style = {styles.headingText}>Precipitation</Text>
         </View>
         <Text style={styles.degreeText}>60</Text>
+        <Text style={styles.Text}>Light Rain expected in a few hours</Text>
     </View>
     </View>
 

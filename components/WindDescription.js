@@ -1,52 +1,53 @@
 import React from 'react'
-import { SafeAreaView, View, Text, StyleSheet,Image } from 'react-native'
+import { SafeAreaView, View, Text, StyleSheet,Image, TouchableOpacity } from 'react-native'
 import Feather from 'react-native-vector-icons/Feather';
 import color from '../config/color';
 
 const WindDescription = () => {
   return (
-     <View style={styles.container}>
-     <View style={styles.windheader}>
-        <Feather style={styles.icon} name="wind" size={25} color={color.white}/>
-        <Text style = {styles.headingText}>
-            Wind
-        </Text>
-    </View>
-      <View style={styles.row}>
-      <View style ={ styles.windspeed}>
-        <View style ={styles.containerSpeed}>
-            <Text style={styles.speed}>
-                13
+     <TouchableOpacity onPress={() => console.log('Wind section pressed!')}>
+         <View style={styles.container}>
+         <View style={styles.windheader}>
+            <Feather style={styles.icon} name="wind" size={25} color={color.white}/>
+            <Text style = {styles.headingText}>
+                Wind
             </Text>
+             </View>
+          <View style={styles.row}>
+          <View style ={ styles.windspeed}>
+            <View style ={styles.containerSpeed}>
+                <Text style={styles.speed}>
+                    13
+                </Text>
+                </View>
+            <View>
+                <Text style={styles.text}>MPH</Text>
+                <Text style={styles.text}>Wind</Text>
             </View>
-        <View>
-            <Text style={styles.text}>MPH</Text>
-            <Text style={styles.text}>Wind</Text>
-        </View>
-    </View>
-      </View>
-      <View style={styles.row}>
-      <View style ={ styles.windspeed}>
-        <View style ={styles.containerSpeed}>
-            <Text style={styles.speed}>
-                27
-            </Text>
+             </View>
+          </View>
+          <View style={styles.row}>
+          <View style ={ styles.windspeed}>
+            <View style ={styles.containerSpeed}>
+                <Text style={styles.speed}>
+                    27
+                </Text>
+                </View>
+            <View>
+                <Text style={styles.text}>MPH</Text>
+                <Text style={styles.text}>Gust</Text>
             </View>
-        <View>
-            <Text style={styles.text}>MPH</Text>
-            <Text style={styles.text}>Gust</Text>
-        </View>
-    </View>
-
-      </View>
-      <View style={styles.imageContainer}>
-          <Image
-            source={require('../app/assets/compass.png')}
-            style={{ width: 100, height: 100}}
-            tintColor={color.white}
-          />
-        </View>
-    </View>
+             </View>
+          </View>
+          <View style={styles.imageContainer}>
+              <Image
+                source={require('../app/assets/compass.png')}
+                style={{ width: 100, height: 100}}
+                tintColor={color.white}
+              />
+            </View>
+             </View>
+     </TouchableOpacity>
   )
 }
 const styles = StyleSheet.create({
