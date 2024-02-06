@@ -9,7 +9,7 @@ import WeatherDescription from '../../../components/WeatherDescription'
 import WindDescription from '../../../components/WindDescription'
 import VisiblityHumidity from '../../../components/VisiblityHumidity'
 
-const WeatherScreen = () => {
+const WeatherScreen = ({ navigation }) => {
   return (
 
 
@@ -30,7 +30,7 @@ const WeatherScreen = () => {
                                 <WeatherDescription/>
                                 </View>
                                 <View style={styles.windContainer}>
-                                    <WindDescription/>
+                                    <WindDescription onPress={() => navigation.navigate("Wind")}/>
                                     </View>
                                     <View style={styles.container}>
                                 <VisiblityHumidity/>

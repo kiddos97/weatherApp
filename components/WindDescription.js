@@ -3,9 +3,9 @@ import { SafeAreaView, View, Text, StyleSheet,Image, TouchableOpacity } from 're
 import Feather from 'react-native-vector-icons/Feather';
 import color from '../config/color';
 
-const WindDescription = () => {
+const WindDescription = ({ onPress }) => {
   return (
-     <TouchableOpacity onPress={() => console.log('Wind section pressed!')}>
+     <TouchableOpacity onPress={onPress}>
          <View style={styles.container}>
          <View style={styles.windheader}>
             <Feather style={styles.icon} name="wind" size={25} color={color.white}/>
