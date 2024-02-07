@@ -53,7 +53,7 @@ const WindDescription = ({ onPress }) => {
 const styles = StyleSheet.create({
     container: {
       flexDirection: 'row', // Primary axis
-      padding:20,
+      padding:10,
       borderColor:color.white,
       borderWidth:2,
       borderRadius:35,
