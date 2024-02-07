@@ -18,7 +18,7 @@ const VisiblityHumidity = () => {
         <View style={styles.container}>
             <View style={styles.iconContainer}>
                 <MaterialCommunityIcons name="weather-partly-rainy" size={15} color={color.white}/>
-                <Text style = {styles.headingText}>Precipitation</Text>
+                <Text style = {styles.headingText}>Humidity</Text>
             </View>
             <Text style={styles.degreeText}>60%</Text>
             <Text style={styles.Text}>The dew point is 46 right now</Text>
@@ -48,7 +48,8 @@ const VisiblityHumidity = () => {
             fontSize:15,
             paddingBottom:20,
             color:color.white,
-            fontWeight:'bold'
+            fontWeight:'bold',
+            textTransform:'uppercase'
         },
         degreeText:{
             fontSize:35,

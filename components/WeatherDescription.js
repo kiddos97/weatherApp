@@ -48,7 +48,9 @@ const styles = StyleSheet.create({
         fontSize:15,
         paddingBottom:20,
         color:color.white,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        textTransform:'uppercase',
+        marginRight:-10
     },
     degreeText:{
         fontSize:35,

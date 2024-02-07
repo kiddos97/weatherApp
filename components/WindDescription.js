@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
         fontSize:15,
         fontWeight:'bold',
         marginLeft:10,
-        color:color.white
+        color:color.white,
+        textTransform:'uppercase'
     },
     containerSpeed:{
         marginRight:20
@@ -103,7 +104,8 @@ const styles = StyleSheet.create({
         fontSize:15,
         fontWeight:'bold',
         color:color.white,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        textTransform:'uppercase'
     },
     icon:{
         marginRight:10
