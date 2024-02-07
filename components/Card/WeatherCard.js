@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         padding:20,
         backgroundColor:'rgba(0,0,0,0.5)',
         marginRight:10,
+      
     },
     headingText:{
         textAlign:'center',

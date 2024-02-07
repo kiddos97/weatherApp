@@ -58,7 +58,11 @@ const styles = StyleSheet.create({
       borderWidth:2,
       borderRadius:35,
       justifyContent:'space-between',
-      backgroundColor:'rgba(0,0,0,0.5)'
+      backgroundColor:'rgba(0,0,0,0.5)',
+      shadowOpacity: .50,
+      shadowRadius: 2.5,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 20},
     },
     row: {
       flexDirection: 'row', // Align items horizontally

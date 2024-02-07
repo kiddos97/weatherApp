@@ -69,6 +69,7 @@ const ForecastList = () => {
 const styles = StyleSheet.create({
     screen:{
         paddingTop:40,
+        padding:5
         
     },
     forecastHeading:{
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
         fontSize:20,
         marginVertical:20,
         fontWeight:'bold'
-      }
+      },
+   
 
 })
 export default ForecastList
