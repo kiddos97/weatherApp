@@ -58,7 +58,7 @@ const ForecastList = () => {
              weather ={ item.weather}
               HiTemp={item.HiTemp} 
               lowTemp ={ item.lowTemp}
-              width={160}
+              width={130}
             />
         )}
         horizontal
@@ -68,7 +68,6 @@ const ForecastList = () => {
 }
 const styles = StyleSheet.create({
     screen:{
-        padding: 10,
         paddingTop:40,
         
     },

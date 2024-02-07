@@ -1,3 +1,4 @@
 export default {
-    white:'#fff'
+    white:'#fff',
+    backgroundColor: 'rgba(0,0,0,0.5)'
 }

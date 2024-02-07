@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
         borderRadius:35,
         borderColor:color.white,
         borderWidth:2,
-        padding:10,
+        padding:20,
         backgroundColor:'rgba(0,0,0,0.5)',
-        marginRight:20,
+        marginRight:10,
     },
     headingText:{
         textAlign:'center',
@@ -49,13 +49,15 @@ const styles = StyleSheet.create({
         fontSize:15
     },
     tempContainer:{
-       flexDirection:'row',
-       justifyContent:'space-between',
+      
+       flexDirection:'column',
+       justifyContent:'space-evenly',
        marginVertical:20
     },
     text:{
         color:color.white,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        textAlign:'center',
     }
 
 })
