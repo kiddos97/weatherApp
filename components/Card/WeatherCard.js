@@ -27,9 +27,10 @@ const styles = StyleSheet.create({
         borderRadius:35,
         borderColor:color.white,
         borderWidth:2,
-        padding:20,
+        padding:10,
         backgroundColor:'rgba(0,0,0,0.5)',
         marginRight:10,
+      
       
     },
     headingText:{

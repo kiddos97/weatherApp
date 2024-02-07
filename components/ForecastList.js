@@ -69,7 +69,11 @@ const ForecastList = () => {
 const styles = StyleSheet.create({
     screen:{
         paddingTop:40,
-        padding:5
+        padding:5,
+        shadowOpacity: 1,
+        shadowRadius: 2.5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 20},
         
     },
     forecastHeading:{

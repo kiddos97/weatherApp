@@ -42,7 +42,7 @@ const VisiblityHumidity = () => {
             backgroundColor: 'rgba(0,0,0,0.5)',
             width:170,
             marginRight:10,
-            shadowOpacity: .50,
+            shadowOpacity: 1,
             shadowRadius: 2.5,
             shadowColor: '#000',
             shadowOffset: { width: 0, height: 20},
