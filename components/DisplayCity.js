@@ -11,16 +11,16 @@ const DisplayCity = ({ weatherData}) => {
                 <Text style={styles.cityText}>
                         {weatherData.name}
                 </Text>
-                <Text style={styles.degrees}>{weatherData.main.temp}</Text>
+                <Text style={styles.degrees}>{weatherData.temp_c}</Text>
                 <View style={styles.iconContainer}>
                     <Ionicons name="sunny" size={50} color="orange"/>
                 </View>
                 <Text style={styles.weatherText}>
-                    {weatherData.weather.main}
+                    {weatherData.last_updated}
                 </Text>
                 <View style={styles.tempContainer}>
-                    <Text style={styles.tempText}>{'HI: '+ weatherData.main.temp_max}</Text>
-                    <Text style={styles.tempText}>{'Low: '+ weatherData.main.temp_min}</Text>
+                    <Text style={styles.tempText}>{'HI: '+ weatherData.wind_mph}</Text>
+                    <Text style={styles.tempText}>{'Low: '+ weatherData.wind_kph}</Text>
                 </View>
             </View>
             ): (<Text style={styles.errorText}><Ionicons name="sunny" size={50} color="orange"/></Text>

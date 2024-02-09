@@ -25,24 +25,22 @@ const WeatherScreen = ({ navigation }) => {
 
 
 const fetchWeatherData = async () => {
-
     try{
-        const apiKey="cb24cf6a11f7bc95590f71abac2b11c2";
-        const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}`;
+        const apiKey="519fd420528c41098e670747240902";
+        const baseURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchCity}}`;
         const res = await axios.get(baseURL)
         setWeatherData(res.data)
     } catch(error){
         console.error('Err: ', error)
     }
 }
-
     const handleCity = async () => {
         try {
             if (searchCity.trim() !== '') {
                 fetchWeatherData();
             }
         } catch (error) {
-            console.error("Err: ", error);
+            console.error("Err: ", error.code);
         }
     };
 
