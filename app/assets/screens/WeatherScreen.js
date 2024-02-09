@@ -27,7 +27,7 @@ const WeatherScreen = ({ navigation }) => {
                         <ForecastList/>
                         </View>
                             <View style={styles.container}>
-                                <WeatherDescription/>
+                                <WeatherDescription onPress={() => navigation.navigate('Rain')}/>
                                 </View>
                                 <View style={styles.windContainer}>
                                     <WindDescription onPress={() => navigation.navigate("Wind")}/>

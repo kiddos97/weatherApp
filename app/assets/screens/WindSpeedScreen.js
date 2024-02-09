@@ -28,9 +28,11 @@ const WindSpeedScreen = () => {
                           <View style={styles.windDescriptionContainer}>
                             <View style={styles.DescriptionContainer}>
                               <Text style={styles.text}>Wind Direction</Text>
-                              <Text style={styles.direction}>4 - 15mph</Text>
-                              <View>
+                              <View style={styles.directionContainer}>
+                              <View style={styles.iconContainer}>
                                 <Feather name="wind" color={color.white} size={30}/>
+                              </View>
+                              <Text style={styles.direction}>4 - 15 mph</Text>
                                 </View>
                             </View>
                           </View>
@@ -52,12 +54,16 @@ const styles = StyleSheet.create({
      mapContainer:{
          backgroundColor: color.backgroundColor,
          borderRadius:30,
-         shadowOpacity: .50,
+         shadowOpacity: 1,
          shadowRadius: 2.5,
          shadowColor: '#000',
          shadowOffset: { width: 0, height: 20},
          margin: 10,
          height:'50%'
+     },
+     directionContainer:{
+        flexDirection:'row',
+        justifyContent:"space-evenly"
      },
      map: {
        width: '100%',
@@ -65,7 +71,6 @@ const styles = StyleSheet.create({
        borderRadius:30,
      },
      windDescriptionContainer:{
-      padding:20,
       paddingTop:40
      },
      DescriptionContainer:{
@@ -86,6 +91,9 @@ const styles = StyleSheet.create({
       paddingTop:30,
       fontSize:25,
       fontWeight:'bold'
+     },
+     iconContainer:{
+      marginVertical: 30
      }
 })
 

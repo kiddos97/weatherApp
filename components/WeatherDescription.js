@@ -1,29 +1,31 @@
 import React from 'react'
-import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
+import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import color from '../config/color';
 
-const WeatherDescription = () => {
+const WeatherDescription = ({ onPress}) => {
   return (
-    <View style={styles.bigContainer}>
-    <View style={styles.container}>
-        <View style={styles.iconContainer}>
-            <FontAwesome5 name="temperature-low" size={15} color={color.white}/>
-            <Text style = {styles.headingText}>Feels Like</Text>
+        <View style={styles.bigContainer}>
+        <View style={styles.container}>
+            <View style={styles.iconContainer}>
+                <FontAwesome5 name="temperature-low" size={15} color={color.white}/>
+                <Text style = {styles.headingText}>Feels Like</Text>
+            </View>
+            <Text style={styles.degreeText}>60</Text>
+            <Text style={styles.Text}>Wind makes it feel colder</Text>
         </View>
-        <Text style={styles.degreeText}>60</Text>
-        <Text style={styles.Text}>Wind makes it feel colder</Text>
-    </View>
-    <View style={styles.container}>
-        <View style={styles.iconContainer}>
-            <Ionicons name="water" size={15} color={color.white}/>
-            <Text style = {styles.headingText}>Precipitation</Text>
+        <TouchableOpacity onPress={onPress}>
+        <View style={styles.container}>
+            <View style={styles.iconContainer}>
+                <Ionicons name="water" size={15} color={color.white}/>
+                <Text style = {styles.headingText}>Precipitation</Text>
+            </View>
+            <Text style={styles.degreeText}>60</Text>
+            <Text style={styles.Text}>Light Rain expected in a few hours</Text>
         </View>
-        <Text style={styles.degreeText}>60</Text>
-        <Text style={styles.Text}>Light Rain expected in a few hours</Text>
-    </View>
-    </View>
+        </TouchableOpacity>
+        </View>
 
   )
 }
