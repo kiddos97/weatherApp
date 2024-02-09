@@ -2,26 +2,33 @@ import React from 'react'
 import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
 import color from '../config/color'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const DisplayCity = () => {
+const DisplayCity = ({ weatherData}) => {
   return (
-  <SafeAreaView>
-    <View style={styles.container}>
-        <Text style={styles.cityText}>
-                Austin, Texas
-        </Text>
-        <Text style={styles.degrees}>60</Text>
-        <View style={styles.iconContainer}>
-            <Ionicons name="sunny" size={50} color="orange"/>
+
+            <View style={styles.container}>
+            {weatherData ? (
+            <View>
+                <Text style={styles.cityText}>
+                        {weatherData.name}
+                </Text>
+                <Text style={styles.degrees}>{weatherData.main.temp}</Text>
+                <View style={styles.iconContainer}>
+                    <Ionicons name="sunny" size={50} color="orange"/>
+                </View>
+                <Text style={styles.weatherText}>
+                    {weatherData.weather.main}
+                </Text>
+                <View style={styles.tempContainer}>
+                    <Text style={styles.tempText}>{'HI: '+ weatherData.main.temp_max}</Text>
+                    <Text style={styles.tempText}>{'Low: '+ weatherData.main.temp_min}</Text>
+                </View>
+            </View>
+            ): (<Text style={styles.errorText}><Ionicons name="sunny" size={50} color="orange"/></Text>
+            )}
         </View>
-        <Text style={styles.weatherText}>
-            Sunny
-        </Text>
-        <View style={styles.tempContainer}>
-            <Text style={styles.tempText}>HI: 75</Text>
-            <Text style={styles.tempText}>Low: 60</Text>
-        </View>
-    </View>
-  </SafeAreaView>
+
+
+
   )
 }
 const styles = StyleSheet.create({
@@ -62,5 +69,11 @@ const styles = StyleSheet.create({
      iconContainer:{
         alignItems:'center',
     },
+    errorText:{
+        fontSize:30,
+        fontWeight:'bold',
+        textAlign:'center',
+        color:color.white
+    }
 })
 export default DisplayCity

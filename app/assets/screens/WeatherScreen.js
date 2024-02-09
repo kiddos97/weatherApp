@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView, Text, View, StyleSheet, Platform, StatusBar, ImageBackground, ScrollView } from 'react-native'
 import SearchCity from '../../../components/SearchCity'
 import DisplayCity from '../../../components/DisplayCity'
@@ -8,8 +7,45 @@ import color from '../../../config/color'
 import WeatherDescription from '../../../components/WeatherDescription'
 import WindDescription from '../../../components/WindDescription'
 import VisiblityHumidity from '../../../components/VisiblityHumidity'
+import axios from "axios";
+
+
+
+
 
 const WeatherScreen = ({ navigation }) => {
+    const [searchCity, setSearchCity] = useState('')
+    const [weatherData, setWeatherData] = useState(null);
+
+    useEffect(() => {
+        if(searchCity.trim() !== ''){
+            fetchWeatherData()
+        }
+    },[searchCity])
+
+
+const fetchWeatherData = async () => {
+
+    try{
+        const apiKey="cb24cf6a11f7bc95590f71abac2b11c2";
+        const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}`;
+        const res = await axios.get(baseURL)
+        setWeatherData(res.data)
+    } catch(error){
+        console.error('Err: ', error)
+    }
+}
+
+    const handleCity = async () => {
+        try {
+            if (searchCity.trim() !== '') {
+                fetchWeatherData();
+            }
+        } catch (error) {
+            console.error("Err: ", error);
+        }
+    };
+
   return (
 
 
@@ -20,9 +56,9 @@ const WeatherScreen = ({ navigation }) => {
         >
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.searchContainer}>
-                <SearchCity/>
+                <SearchCity handleCity={handleCity} setSearchCity={setSearchCity}/>
                 </View>
-                    <DisplayCity/>
+                    <DisplayCity weatherData={weatherData}/>
                     <View>
                         <ForecastList/>
                         </View>

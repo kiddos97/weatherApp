@@ -1,27 +1,24 @@
-import React from 'react'
+
 import { StyleSheet, View, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import { useState } from 'react';
+import React from 'react';
 import color from '../config/color';
 
-const SearchCity = () => {
 
-    const [searchCity, setSearchCity] = useState('')
 
-    const handleCity = (text) => setSearchCity(text)
+const SearchCity = ({searchCity, handleCity, setSearchCity}) => {
 
-    const handlePress = () => console.log("City: " + searchCity)
 
   return (
    <SafeAreaView>
-       <View style={styles.container}>
+       <View style={styles.container}> 
        <TextInput
        style={styles.textinput}
        placeholder='Search City....'
        placeholderTextColor="white"
-       onChangeText={handleCity}
+       onChangeText={text => setSearchCity(text)}
        value={searchCity}/>
-       <TouchableOpacity onPress={handlePress}>
+       <TouchableOpacity onPress={handleCity}>
            <View style={styles.iconContainer}>
                <EvilIcons name="search" size={35} color="white"/>
            </View>
