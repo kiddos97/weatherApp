@@ -7,6 +7,7 @@ import color from '../../../config/color'
 import WeatherDescription from '../../../components/WeatherDescription'
 import WindDescription from '../../../components/WindDescription'
 import VisiblityHumidity from '../../../components/VisiblityHumidity'
+import * as Location from 'expo-location'
 import axios from "axios";
 
 
@@ -16,28 +17,60 @@ import axios from "axios";
 const WeatherScreen = ({ navigation }) => {
     const [searchCity, setSearchCity] = useState('')
     const [weatherData, setWeatherData] = useState(null);
+    const [location, setLocation] = useState();
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
+    const [searchOption, setSearchOption] = useState('city');
 
     useEffect(() => {
-        if(searchCity.trim() !== ''){
+        if(searchCity){
             fetchWeatherData()
         }
-    },[searchCity])
+    },[])
+
+    useEffect(() => {
+        getLocation();
+    },[])
+    const getLocation = async() => {
+        try{
+            const { granted} = await Location.requestForegroundPermissionsAsync()
+            if(!granted) return 
+
+            const { coords:{latitude, longitude} } = await Location.getLastKnownPositionAsync()
+            setLatitude(latitude)
+            setLongitude(longitude)
+            setLocation({latitude,longitude})
+        }catch(error){
+            console.error(error)
+        }
+
+        }
+       
 
 
-const fetchWeatherData = async () => {
-    try{
-        const apiKey="519fd420528c41098e670747240902";
-        const baseURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchCity}}`;
+    const fetchWeatherData = async () => {
+        try{
+        const apiKey="cb24cf6a11f7bc95590f71abac2b11c2";
+        const latitude = location.latitude
+        const longitude =  location.longitude
+        const baseURL = ``
+        if(searchOption === "city"){
+            baseURL = `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${apiKey}`
+        }else{
+            baseURL =  `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+        }
         const res = await axios.get(baseURL)
         setWeatherData(res.data)
-    } catch(error){
+     } catch(error){
         console.error('Err: ', error)
-    }
+        }
 }
     const handleCity = async () => {
         try {
-            if (searchCity.trim() !== '') {
+            if (searchOption === "city" && searchCity.trim() !== '') {
                 fetchWeatherData();
+            }else if(searchOption === "coordinates" && latitude.trim() !== '' && longitude.trim() !== ''){
+                fetchWeatherData()
             }
         } catch (error) {
             console.error("Err: ", error.code);
@@ -54,7 +87,14 @@ const fetchWeatherData = async () => {
         >
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.searchContainer}>
-                <SearchCity handleCity={handleCity} setSearchCity={setSearchCity}/>
+                <SearchCity 
+                handleCity={handleCity}
+                setSearchCity={setSearchCity}
+                setSearchOption={setSearchOption}
+                latitude={latitude}
+                longitude={longitude}
+                searchOption={searchOption}
+                searchCity={searchCity}/>
                 </View>
                     <DisplayCity weatherData={weatherData}/>
                     <View>

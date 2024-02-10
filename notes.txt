@@ -81,3 +81,6 @@
    <NavigationContainer>
    <AuthNavigator/>
     </NavigationContainer>
+
+
+    f95f8e5634ba4d229f8e5634baad22cb
