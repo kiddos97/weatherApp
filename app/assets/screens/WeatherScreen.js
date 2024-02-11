@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, Text, View, StyleSheet, Platform, StatusBar, ImageBackground, ScrollView } from 'react-native'
+import { View, StyleSheet, Platform, StatusBar, ImageBackground, ScrollView } from 'react-native'
 import SearchCity from '../../../components/SearchCity'
 import DisplayCity from '../../../components/DisplayCity'
 import ForecastList from '../../../components/ForecastList'
-import color from '../../../config/color'
+
 import WeatherDescription from '../../../components/WeatherDescription'
 import WindDescription from '../../../components/WindDescription'
 import VisiblityHumidity from '../../../components/VisiblityHumidity'
 import * as Location from 'expo-location'
 import axios from "axios";
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry'
-
-
 
 
 
@@ -20,12 +17,14 @@ const WeatherScreen = ({ navigation }) => {
     const [weatherData, setWeatherData] = useState(null);
     const [location, setLocation] = useState();
 
+    const DEFAULT_LOCATION = { latitude: 37.7749, longitude: -122.4194 }; // Default location (San Francisco)
+
+
     useEffect(() => {
         getLocation();
     },[])
 
     useEffect(() => {
-        
        if(location){
         fetchWeatherData()
        }
@@ -33,9 +32,8 @@ const WeatherScreen = ({ navigation }) => {
         
     },[location])
 
-    useEffect(() => {
-        getLocation();
-    },[])
+
+
     const getLocation = async() => {
         try{
             const { granted} = await Location.requestForegroundPermissionsAsync()
@@ -53,8 +51,8 @@ const WeatherScreen = ({ navigation }) => {
     const fetchWeatherData = async () => {
         try{
         const apiKey="cb24cf6a11f7bc95590f71abac2b11c2";
-        const latitude = location.latitude
-        const longitude =  location.longitude
+        let latitude = location.latitude
+        let longitude =  location.longitude
         const baseURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
         const res = await axios.get(baseURL)
         setWeatherData(res.data)
