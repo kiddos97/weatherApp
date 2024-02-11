@@ -17,9 +17,9 @@ const DisplayCity = ({ weatherData}) => {
                 <Text style={styles.cityText}>
                         {weatherData.name}
                 </Text>
-                <Text style={styles.degrees}>{decimalToDMS(weatherData.main.temp)}</Text>
+                <Text style={styles.degrees}>{weatherData.main.temp}</Text>
                 <View style={styles.iconContainer}>
-                    <Text>{weatherData.weather[0].icon}</Text>
+                    <Text><Ionicons name="sunny" size={50} color="orange"/></Text>
                 </View>
                 <Text style={styles.weatherText}>
                     {weatherData.weather[0].description}

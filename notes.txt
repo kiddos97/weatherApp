@@ -84,3 +84,71 @@
 
 
     f95f8e5634ba4d229f8e5634baad22cb
+
+    <Text style={styles.degrees}>{weatherData.main.temp}</Text>
+
+
+
+const WeatherScreen = ({ navigation }) => {
+    const [searchCity, setSearchCity] = useState('')
+    const [weatherData, setWeatherData] = useState(null);
+    const [location, setLocation] = useState();
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
+    const [searchOption, setSearchOption] = useState('city');
+
+    useEffect(() => {
+        if(searchCity){
+            fetchWeatherData()
+        }
+    },[])
+
+    useEffect(() => {
+        getLocation();
+    },[])
+    const getLocation = async() => {
+        try{
+            const { granted} = await Location.requestForegroundPermissionsAsync()
+            if(!granted) return 
+
+            const { coords:{latitude, longitude} } = await Location.getLastKnownPositionAsync()
+            setLatitude(latitude)
+            setLongitude(longitude)
+            setLocation({latitude,longitude})
+        }catch(error){
+            console.error(error)
+        }
+        }
+       
+
+
+    const fetchWeatherData = async () => {
+        try{
+        const apiKey="cb24cf6a11f7bc95590f71abac2b11c2";
+        const latitude = location.latitude
+        const longitude =  location.longitude
+        let baseURL = ``
+        if(searchOption === "city"){
+            baseURL = `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${apiKey}`
+        }else{
+            baseURL =  `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+        }
+        const res = await axios.get(baseURL)
+        setWeatherData(res.data)
+     } catch(error){
+        console.error('Err: ', error)
+        }
+}
+    const handleCity = async () => {
+        try {
+            if (searchOption === "city" && searchCity.trim() !== '') {
+                setSearchOption('city')
+                fetchWeatherData();
+            }else if(searchOption === "coordinates" && latitude.trim() !== '' && longitude.trim() !== ''){
+                setSearchOption('coordinates')
+                fetchWeatherData()
+            }
+        } catch (error) {
+            console.error("Err: ", error.code);
+        }
+    };

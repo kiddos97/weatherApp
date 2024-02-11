@@ -23,12 +23,12 @@ const SearchCity = ({ searchOption, handleCity, setSearchCity, latitude, longitu
                 onChangeText={handleChangeText}
                 value={searchOption === 'city' ? searchCity : `${latitude}, ${longitude}`}
             />
-             <TouchableOpacity onPress={() => setSearchOption('city')}>
+             <TouchableOpacity onPress={handleCity}>
                 <View style={styles.iconContainer}>
                     <EvilIcons name="search" size={35} color="white"/>
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => setSearchOption("coordinates")}>
+            <TouchableOpacity onPress={handleCity}>
                 <View style={styles.iconContainer}>
                     <EvilIcons name={searchOption === 'city' ? 'location' : 'location'} size={35} color="white"/>
                 </View>
