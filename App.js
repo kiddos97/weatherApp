@@ -10,7 +10,7 @@ import AuthNavigator from "./app/assets/Navigation/AuthNavigator";
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import Test from "./components/Test/Test";
 
-const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (

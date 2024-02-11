@@ -3,16 +3,8 @@ import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 import color from '../config/color';
 
-const SearchCity = ({ searchOption, handleCity, setSearchCity, latitude, longitude, searchCity,setSearchOption}) => {
-    const handleChangeText = (text) => {
-        if (searchOption === 'city') {
-            setSearchCity(text); // Update the searchCity state for city names
-        } else {
-            // For coordinates, split the input into latitude and longitude
-            const [latitude, longitude] = text.split(',');
-            setSearchCity({ latitude: parseFloat(latitude), longitude: parseFloat(longitude) });
-        }
-    };
+const SearchCity = ({ handleCity, setSearchCity, searchCity}) => {
+    const handleChangeText = (text) =>  setSearchCity(text); // Update the searchCity state for city names
 
     return (
         <View style={styles.container}>
@@ -21,16 +13,11 @@ const SearchCity = ({ searchOption, handleCity, setSearchCity, latitude, longitu
                 placeholder='Search City....'
                 placeholderTextColor="white"
                 onChangeText={handleChangeText}
-                value={searchOption === 'city' ? searchCity : `${latitude}, ${longitude}`}
+                value={searchCity}
             />
              <TouchableOpacity onPress={handleCity}>
                 <View style={styles.iconContainer}>
                     <EvilIcons name="search" size={35} color="white"/>
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={handleCity}>
-                <View style={styles.iconContainer}>
-                    <EvilIcons name={searchOption === 'city' ? 'location' : 'location'} size={35} color="white"/>
                 </View>
             </TouchableOpacity>
         </View>

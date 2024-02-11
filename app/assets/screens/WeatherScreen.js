@@ -9,6 +9,7 @@ import WindDescription from '../../../components/WindDescription'
 import VisiblityHumidity from '../../../components/VisiblityHumidity'
 import * as Location from 'expo-location'
 import axios from "axios";
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry'
 
 
 
@@ -18,15 +19,19 @@ const WeatherScreen = ({ navigation }) => {
     const [searchCity, setSearchCity] = useState('')
     const [weatherData, setWeatherData] = useState(null);
     const [location, setLocation] = useState();
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
-    const [searchOption, setSearchOption] = useState('city');
 
     useEffect(() => {
-        if(searchCity){
-            fetchWeatherData()
-        }
+        getLocation();
     },[])
+
+    useEffect(() => {
+        
+       if(location){
+        fetchWeatherData()
+       }
+            
+        
+    },[location])
 
     useEffect(() => {
         getLocation();
@@ -37,8 +42,6 @@ const WeatherScreen = ({ navigation }) => {
             if(!granted) return 
 
             const { coords:{latitude, longitude} } = await Location.getLastKnownPositionAsync()
-            setLatitude(latitude)
-            setLongitude(longitude)
             setLocation({latitude,longitude})
         }catch(error){
             console.error(error)
@@ -52,14 +55,8 @@ const WeatherScreen = ({ navigation }) => {
         const apiKey="cb24cf6a11f7bc95590f71abac2b11c2";
         const latitude = location.latitude
         const longitude =  location.longitude
-        let baseURL = ``
-        if(searchOption === "city"){
-            baseURL = `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${apiKey}`
-        }else{
-            baseURL =  `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
-        }
+        const baseURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
         const res = await axios.get(baseURL)
-        console.log(res.data)
         setWeatherData(res.data)
      } catch(error){
         console.error('Err: ', error)
@@ -67,11 +64,7 @@ const WeatherScreen = ({ navigation }) => {
 }
     const handleCity = async () => {
         try {
-            if (searchOption === "city" && searchCity.trim() !== '') {
-                setSearchOption('city')
-                fetchWeatherData();
-            }else if(searchOption === "coordinates" && latitude.trim() !== '' && longitude.trim() !== ''){
-                setSearchOption('coordinates')
+            if(searchCity.trim() !== ''){
                 fetchWeatherData()
             }
         } catch (error) {
@@ -92,10 +85,6 @@ const WeatherScreen = ({ navigation }) => {
                 <SearchCity 
                 handleCity={handleCity}
                 setSearchCity={setSearchCity}
-                setSearchOption={setSearchOption}
-                latitude={latitude}
-                longitude={longitude}
-                searchOption={searchOption}
                 searchCity={searchCity}/>
                 </View>
                     <DisplayCity weatherData={weatherData}/>
