@@ -17,8 +17,9 @@ const WeatherScreen = ({ navigation }) => {
     const [weatherData, setWeatherData] = useState(null);
     const [location, setLocation] = useState();
 
-    const DEFAULT_LOCATION = { latitude: 37.7749, longitude: -122.4194 }; // Default location (San Francisco)
-
+    const apiKey="ZZ5VUaL8uGJKKQsyObdhdBVDGRQhcyDV";
+    //const DEFAULT_LOCATION = { latitude: 37.7749, longitude: -122.4194 }; // Default location (San Francisco)
+    
 
     useEffect(() => {
         getLocation();
@@ -32,7 +33,12 @@ const WeatherScreen = ({ navigation }) => {
         
     },[location])
 
-
+    useEffect(() => {
+        if(searchCity.trim() !== ''){
+            fetchCityData();
+        }
+        
+    },[])
 
     const getLocation = async() => {
         try{
@@ -44,26 +50,37 @@ const WeatherScreen = ({ navigation }) => {
         }catch(error){
             console.error(error)
         }
-        }
-       
-
-
+        } 
     const fetchWeatherData = async () => {
         try{
-        const apiKey="cb24cf6a11f7bc95590f71abac2b11c2";
         let latitude = location.latitude
         let longitude =  location.longitude
-        const baseURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+        //const baseURL = `https://api.tomorrow.io/v4/weather/realtime?location=${searchCity}&units=imperial&apikey=${apiKey}`
+        const baseURL =`https://api.tomorrow.io/v4/weather/realtime?location=${latitude},${longitude}&units=imperial&apikey=${apiKey}`
+        //const baseURL = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
         const res = await axios.get(baseURL)
+        console.log(res.data)
         setWeatherData(res.data)
      } catch(error){
         console.error('Err: ', error)
         }
 }
+
+
+    const fetchCityData = async () => {
+        try{
+       
+            const baseCityUrl = `https://api.tomorrow.io/v4/weather/forecast?location=${searchCity}&apikey=${apiKey}`;
+            const res = await axios.get(baseCityUrl)
+            setWeatherData(res.data)
+        }catch(error){
+            console.log('Err: ' + error)
+        }
+    }
     const handleCity = async () => {
         try {
             if(searchCity.trim() !== ''){
-                fetchWeatherData()
+                fetchCityData()
             }
         } catch (error) {
             console.error("Err: ", error.code);
@@ -71,7 +88,7 @@ const WeatherScreen = ({ navigation }) => {
     };
 
   return (
-
+     
 
     <ImageBackground
         style={styles.screen}

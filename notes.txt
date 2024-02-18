@@ -152,3 +152,5 @@ const WeatherScreen = ({ navigation }) => {
             console.error("Err: ", error.code);
         }
     };
+
+    cb24cf6a11f7bc95590f71abac2b11c2  -- open weather api 
