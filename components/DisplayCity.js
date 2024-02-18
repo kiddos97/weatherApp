@@ -3,6 +3,13 @@ import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
 import color from '../config/color'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const DisplayCity = ({ weatherData}) => {
+
+    const decimalToDMS = (decimal) => {
+        const degrees = Math.floor(decimal);// Round to 2 decimal places
+
+    
+        return `${degrees}° `;
+      };
   
   return (
 
@@ -12,7 +19,7 @@ const DisplayCity = ({ weatherData}) => {
                 <Text style={styles.cityText}>
                         {weatherData.location.name}
                 </Text>
-                <Text style={styles.degrees}>{weatherData.data.values.temperature}</Text>
+                <Text style={styles.degrees}>{decimalToDMS(weatherData.data.values.temperature)}</Text>
                 <View style={styles.iconContainer}>
                     <Text><Ionicons name="sunny" size={50} color="orange"/></Text>
                 </View>
@@ -20,8 +27,8 @@ const DisplayCity = ({ weatherData}) => {
                     {weatherData.type}
                 </Text>
                 <View style={styles.tempContainer}>
-                    <Text style={styles.tempText}>{'HI: '+ weatherData.data.values.windGust}</Text>
-                    <Text style={styles.tempText}>{'Low: '+ weatherData.data.values.windSpeed}</Text>
+                    <Text style={styles.tempText}>{'HI: '+ decimalToDMS(weatherData.data.values.windGust)}</Text>
+                    <Text style={styles.tempText}>{'Low: '+ decimalToDMS(weatherData.data.values.windSpeed)}</Text>
                 </View>
             </View>
             ): (<Text style={styles.errorText}><Ionicons name="sunny" size={50} color="orange"/></Text>
@@ -38,7 +45,7 @@ const styles = StyleSheet.create({
         paddingTop:20
     },
     cityText:{
-        fontSize:30,
+        fontSize:20,
         fontWeight:'bold',
         textAlign:'center',
         color:color.white

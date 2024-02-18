@@ -3,7 +3,16 @@ import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 import color from '../config/color';
 
-const SearchCity = ({ handleCity, setSearchCity, searchCity}) => {
+const SearchCity = ({ handleCity, setSearchCity,searchCity}) => {
+
+    const [searchValue, setSearchValue] = useState('');
+
+    
+
+    const handleSearch = () => {
+        handleCity(searchValue);
+        setSearchCity('');
+    }
     const handleChangeText = (text) =>  setSearchCity(text); // Update the searchCity state for city names
 
     return (
@@ -15,7 +24,7 @@ const SearchCity = ({ handleCity, setSearchCity, searchCity}) => {
                 onChangeText={handleChangeText}
                 value={searchCity}
             />
-             <TouchableOpacity onPress={handleCity}>
+             <TouchableOpacity onPress={handleSearch}>
                 <View style={styles.iconContainer}>
                     <EvilIcons name="search" size={35} color="white"/>
                 </View>

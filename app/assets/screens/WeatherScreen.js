@@ -70,8 +70,9 @@ const WeatherScreen = ({ navigation }) => {
     const fetchCityData = async () => {
         try{
        
-            const baseCityUrl = `https://api.tomorrow.io/v4/weather/forecast?location=${searchCity}&apikey=${apiKey}`;
+            const baseCityUrl = `https://api.tomorrow.io/v4/weather/realtime?location=${searchCity}&units=imperial&apikey=${apiKey}`;
             const res = await axios.get(baseCityUrl)
+            console.log(res.data)
             setWeatherData(res.data)
         }catch(error){
             console.log('Err: ' + error)
