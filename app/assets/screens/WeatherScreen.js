@@ -78,13 +78,25 @@ const WeatherScreen = ({ navigation }) => {
             console.log('Err: ' + error)
         }
     }
+
+    const fetchDailyForecast = async () => {
+        try{
+            const baseDailyUrl = `https://api.tomorrow.io/v4/weather/forecast?location=${searchCity}&timesteps=1d&apikey=${apiKey}`
+            const res = await axios.get(baseDailyUrl)
+            console.log('Dalily: ' + res.data)
+            setWeatherData(res.data)
+        }catch(error){
+            console.error('Err: ', error)
+        }
+    }
     const handleCity = async () => {
         try {
             if(searchCity.trim() !== ''){
                 fetchCityData()
+                //fetchDailyForecast();
             }
         } catch (error) {
-            console.error("Err: ", error.code);
+            console.error("Err: ", error);
         }
     };
 
@@ -105,7 +117,7 @@ const WeatherScreen = ({ navigation }) => {
                 </View>
                     <DisplayCity weatherData={weatherData}/>
                     <View>
-                        <ForecastList/>
+                        <ForecastList weatherData={weatherData}/>
                         </View>
                             <View style={styles.container}>
                                 <WeatherDescription onPress={() => navigation.navigate('Rain')}/>

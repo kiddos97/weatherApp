@@ -43,7 +43,7 @@ const Weather = [
 },
 ]
 
-const ForecastList = () => {
+const ForecastList = ({ weatherData }) => {
 
     //const [weather, setWeather] = useState([])
   return (
