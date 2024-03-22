@@ -15,6 +15,7 @@ import axios from "axios";
 const WeatherScreen = ({ navigation }) => {
     const [searchCity, setSearchCity] = useState('')
     const [weatherData, setWeatherData] = useState(null);
+    const [forecastData, setForecasteData] = useState(null);
     const [location, setLocation] = useState();
 
     const apiKey="ZZ5VUaL8uGJKKQsyObdhdBVDGRQhcyDV";
@@ -39,6 +40,14 @@ const WeatherScreen = ({ navigation }) => {
         }
         
     },[])
+
+    useEffect(() => {
+        if(searchCity.trim() !== ''){
+            fetchDailyForecast();
+        }
+        
+    },[])
+
 
     const getLocation = async() => {
         try{
@@ -93,7 +102,7 @@ const WeatherScreen = ({ navigation }) => {
         try {
             if(searchCity.trim() !== ''){
                 fetchCityData()
-                //fetchDailyForecast();
+                fetchDailyForecast();
             }
         } catch (error) {
             console.error("Err: ", error);
@@ -117,7 +126,7 @@ const WeatherScreen = ({ navigation }) => {
                 </View>
                     <DisplayCity weatherData={weatherData}/>
                     <View>
-                        <ForecastList weatherData={weatherData}/>
+                        <ForecastList forecastData={forecastData}/>
                         </View>
                             <View style={styles.container}>
                                 <WeatherDescription onPress={() => navigation.navigate('Rain')}/>
