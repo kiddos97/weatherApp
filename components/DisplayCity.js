@@ -19,7 +19,7 @@ const DisplayCity = ({ weatherData}) => {
                 <Text style={styles.cityText}>
                         {weatherData.location.name}
                 </Text>
-                <Text style={styles.degrees}>{decimalToDMS(weatherData.current?.temp_c)}</Text>
+                <Text style={styles.degrees}>{decimalToDMS(weatherData.current?.temp_f)}</Text>
                 <View style={styles.iconContainer}>
                     <Image
                     source = {{uri:'https:'+weatherData.current?.condition?.icon}}
@@ -29,8 +29,8 @@ const DisplayCity = ({ weatherData}) => {
                     {weatherData.current?.condition?.text}
                 </Text>
                 <View style={styles.tempContainer}>
-                    <Text style={styles.tempText}>{'HI: '+ decimalToDMS(weatherData.current?.feelslike_c)}</Text>
-                    <Text style={styles.tempText}>{'Low: '+ decimalToDMS(weatherData.current?.feelslike_f)}</Text>
+                    <Text style={styles.tempText}>{'Wind: '+ weatherData.current?.wind_mph+'mph'}</Text>
+                    <Text style={styles.tempText}>{'Wind Direction: '+ weatherData.current?.wind_dir}</Text>
                 </View>
             </View>
             ): (<Text style={styles.errorText}><Ionicons name="sunny" size={50} color="orange"/></Text>

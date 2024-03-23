@@ -14,21 +14,21 @@ const ForecastList = ({ forecastData }) => {
     <View style={styles.screen}>
          <Text style={styles.forecastHeading}> 5 - Day Forecast</Text>
          <FlatList
-  data={forecastData.forecast.forecastday}
-  keyExtractor={(item) => item.date}
-  renderItem={({ item }) => {
-    let date = new Date(item.date);
-    let options = { weekday: 'long' };
-    let dayname = date.toLocaleDateString('en-US', options);
-    dayname = dayname.split(',')[0];
+        data={forecastData.forecast.forecastday}
+        keyExtractor={(item) => item.date}
+        renderItem={({ item }) => {
+          let date = new Date(item.date);
+          let options = { weekday: 'long' };
+          let dayname = date.toLocaleDateString('en-US', options);
+          dayname = dayname.split(',')[0];
 
     return (
       <WeatherCard
         Day={dayname}
-        icon={item.day?.condition?.icon}
         weather={item.day?.condition?.text}
         HiTemp={item.day?.maxtemp_f}
         lowTemp={item.day?.mintemp_f}
+        iconURL={item.day?.condition?.icon}
         width={130}
       />
     );

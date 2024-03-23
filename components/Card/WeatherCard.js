@@ -1,16 +1,16 @@
 import React from 'react'
-import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
+import { SafeAreaView, View, Text, StyleSheet,Image } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import color from '../../config/color';
-const WeatherCard = ({Day, weather, HiTemp, lowTemp, width,icon}) => {
+const WeatherCard = ({Day, weather, HiTemp, lowTemp, width,iconURL}) => {
   return (
   
  
         <View style={[styles.cardContainer,{width}]}>
             <Text style={styles.headingText}>{Day}</Text>
             <View style={styles.iconContainer}>
-                <Text>{icon}</Text>
+                <Image source={{uri:iconURL}} style={{ width: 50, height: 50 }}/>
             </View>
             <Text style={styles.weatherText}>{weather}</Text>
             <View style={styles.tempContainer}>
