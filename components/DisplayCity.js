@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
+import { SafeAreaView, View, Text, StyleSheet, Image } from 'react-native'
 import color from '../config/color'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const DisplayCity = ({ weatherData}) => {
@@ -19,16 +19,18 @@ const DisplayCity = ({ weatherData}) => {
                 <Text style={styles.cityText}>
                         {weatherData.location.name}
                 </Text>
-                <Text style={styles.degrees}>{decimalToDMS(weatherData.data.values.temperature)}</Text>
+                <Text style={styles.degrees}>{decimalToDMS(weatherData.current?.temp_c)}</Text>
                 <View style={styles.iconContainer}>
-                    <Text><Ionicons name="sunny" size={50} color="orange"/></Text>
+                    <Image
+                    source = {{uri:'https:'+weatherData.current?.condition?.icon}}
+                    />
                 </View>
                 <Text style={styles.weatherText}>
-                    {weatherData.type}
+                    {weatherData.current?.condition?.text}
                 </Text>
                 <View style={styles.tempContainer}>
-                    <Text style={styles.tempText}>{'HI: '+ decimalToDMS(weatherData.data.values.windGust)}</Text>
-                    <Text style={styles.tempText}>{'Low: '+ decimalToDMS(weatherData.data.values.windSpeed)}</Text>
+                    <Text style={styles.tempText}>{'HI: '+ decimalToDMS(weatherData.current?.feelslike_c)}</Text>
+                    <Text style={styles.tempText}>{'Low: '+ decimalToDMS(weatherData.current?.feelslike_f)}</Text>
                 </View>
             </View>
             ): (<Text style={styles.errorText}><Ionicons name="sunny" size={50} color="orange"/></Text>

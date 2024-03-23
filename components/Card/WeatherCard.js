@@ -3,14 +3,14 @@ import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import color from '../../config/color';
-const WeatherCard = ({Day, weather, HiTemp, lowTemp, width}) => {
+const WeatherCard = ({Day, weather, HiTemp, lowTemp, width,icon}) => {
   return (
   
  
         <View style={[styles.cardContainer,{width}]}>
             <Text style={styles.headingText}>{Day}</Text>
             <View style={styles.iconContainer}>
-                <Ionicons name="sunny" size={30} color="orange"/>
+                <Text>{icon}</Text>
             </View>
             <Text style={styles.weatherText}>{weather}</Text>
             <View style={styles.tempContainer}>

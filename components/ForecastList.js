@@ -4,65 +4,38 @@ import color from '../config/color'
 
 import WeatherCard from './Card/WeatherCard'
 
-// const Weather = [
-
-//     {
-//         id:1,
-//         Day: "Monday",
-//         weather: "Sunny",
-//         HiTemp: 75,
-//         lowTemp: 60
-// },
-// {
-//     id:2,
-//     Day: "Tuesday",
-//     weather: "Sunny",
-//     HiTemp: 75,
-//     lowTemp: 60
-// },
-// {
-//     id:3,
-//     Day: "Wednesday",
-//     weather: "Sunny",
-//     HiTemp: 75,
-//     lowTemp: 60
-// },
-// {
-//     id:4,
-//     Day: "Thursday",
-//     weather: "Sunny",
-//     HiTemp: 75,
-//     lowTemp: 60
-// },
-// {
-//     id:5,
-//     Day: "Friday",
-//     weather: "Sunny",
-//     HiTemp: 75,
-//     lowTemp: 60
-// },
-// ]
 
 const ForecastList = ({ forecastData }) => {
+
+  
 
     //const [weather, setWeather] = useState([])
   return (
     <View style={styles.screen}>
          <Text style={styles.forecastHeading}> 5 - Day Forecast</Text>
-        <FlatList
-        data={forecastData}
-        keyExtractor={item =>  item.id.toString()}
-        renderItem={({ item }) => (
-            <WeatherCard
-            Day={item.Day}
-             weather ={ item.weather}
-              HiTemp={item.HiTemp} 
-              lowTemp ={ item.lowTemp}
-              width={130}
-            />
-        )}
-        horizontal
-        />
+         <FlatList
+  data={forecastData.forecast.forecastday}
+  keyExtractor={(item) => item.date}
+  renderItem={({ item }) => {
+    let date = new Date(item.date);
+    let options = { weekday: 'long' };
+    let dayname = date.toLocaleDateString('en-US', options);
+    dayname = dayname.split(',')[0];
+
+    return (
+      <WeatherCard
+        Day={dayname}
+        icon={item.day?.condition?.icon}
+        weather={item.day?.condition?.text}
+        HiTemp={item.day?.maxtemp_f}
+        lowTemp={item.day?.mintemp_f}
+        width={130}
+      />
+    );
+  }}
+  horizontal
+/>
+
     </View>
   )
 }

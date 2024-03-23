@@ -15,10 +15,11 @@ import axios from "axios";
 const WeatherScreen = ({ navigation }) => {
     const [searchCity, setSearchCity] = useState('')
     const [weatherData, setWeatherData] = useState(null);
-    const [forecastData, setForecasteData] = useState(null);
+    const [forecastData, setForecastData] = useState(null);
     const [location, setLocation] = useState();
 
-    const apiKey="ZZ5VUaL8uGJKKQsyObdhdBVDGRQhcyDV";
+    //const apiKey="ZZ5VUaL8uGJKKQsyObdhdBVDGRQhcyDV";
+    const apiKey = '519fd420528c41098e670747240902'
     //const DEFAULT_LOCATION = { latitude: 37.7749, longitude: -122.4194 }; // Default location (San Francisco)
     
 
@@ -64,9 +65,8 @@ const WeatherScreen = ({ navigation }) => {
         try{
         let latitude = location.latitude
         let longitude =  location.longitude
-        //const baseURL = `https://api.tomorrow.io/v4/weather/realtime?location=${searchCity}&units=imperial&apikey=${apiKey}`
-        const baseURL =`https://api.tomorrow.io/v4/weather/realtime?location=${latitude},${longitude}&units=imperial&apikey=${apiKey}`
-        //const baseURL = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+        const baseURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}`
+        //const baseURL =`https://api.tomorrow.io/v4/weather/realtime?location=${latitude},${longitude}&units=imperial&apikey=${apiKey}`
         const res = await axios.get(baseURL)
         console.log(res.data)
         setWeatherData(res.data)
@@ -79,7 +79,8 @@ const WeatherScreen = ({ navigation }) => {
     const fetchCityData = async () => {
         try{
        
-            const baseCityUrl = `https://api.tomorrow.io/v4/weather/realtime?location=${searchCity}&units=imperial&apikey=${apiKey}`;
+            const baseCityUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchCity}`
+            //const baseCityUrl = `https://api.tomorrow.io/v4/weather/realtime?location=${searchCity}&units=imperial&apikey=${apiKey}`;
             const res = await axios.get(baseCityUrl)
             console.log(res.data)
             setWeatherData(res.data)
@@ -90,10 +91,10 @@ const WeatherScreen = ({ navigation }) => {
 
     const fetchDailyForecast = async () => {
         try{
-            const baseDailyUrl = `https://api.tomorrow.io/v4/weather/forecast?location=${searchCity}&timesteps=1d&apikey=${apiKey}`
+            const baseDailyUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchCity}&days=5&aqi=no&alerts=no`
             const res = await axios.get(baseDailyUrl)
-            console.log('Dalily: ' + res.data)
-            setWeatherData(res.data)
+            console.log('Daily: ' + res.data)
+            setForecastData(res.data)
         }catch(error){
             console.error('Err: ', error)
         }
@@ -126,7 +127,7 @@ const WeatherScreen = ({ navigation }) => {
                 </View>
                     <DisplayCity weatherData={weatherData}/>
                     <View>
-                        <ForecastList forecastData={forecastData}/>
+                        {forecastData&& <ForecastList forecastData={forecastData}/>}
                         </View>
                             <View style={styles.container}>
                                 <WeatherDescription onPress={() => navigation.navigate('Rain')}/>
