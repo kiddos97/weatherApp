@@ -9,7 +9,7 @@ const ForecastList = ({ forecastData }) => {
 
   
 
-    //const [weather, setWeather] = useState([])
+
   return (
     <View style={styles.screen}>
          <Text style={styles.forecastHeading}> Daily Forecast</Text>
