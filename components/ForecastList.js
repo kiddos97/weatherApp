@@ -12,7 +12,7 @@ const ForecastList = ({ forecastData }) => {
     //const [weather, setWeather] = useState([])
   return (
     <View style={styles.screen}>
-         <Text style={styles.forecastHeading}> 5 - Day Forecast</Text>
+         <Text style={styles.forecastHeading}> Daily Forecast</Text>
          <FlatList
         data={forecastData.forecast.forecastday}
         keyExtractor={(item) => item.date}
@@ -29,7 +29,7 @@ const ForecastList = ({ forecastData }) => {
         HiTemp={item.day?.maxtemp_f}
         lowTemp={item.day?.mintemp_f}
         iconURL={item.day?.condition?.icon}
-        width={130}
+        width={140}
       />
     );
   }}

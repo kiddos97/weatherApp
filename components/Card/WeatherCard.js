@@ -24,12 +24,12 @@ const WeatherCard = ({Day, weather, HiTemp, lowTemp, width,iconURL}) => {
 
 const styles = StyleSheet.create({
     cardContainer:{
-        borderRadius:35,
+        borderRadius:50,
         borderColor:color.white,
         borderWidth:2,
         padding:10,
         backgroundColor:'rgba(0,0,0,0.5)',
-        marginRight:10,
+        marginRight:15,
       
       
     },
