@@ -19,7 +19,7 @@ const WeatherScreen = ({ navigation }) => {
     const [location, setLocation] = useState();
 
     //const apiKey="ZZ5VUaL8uGJKKQsyObdhdBVDGRQhcyDV";
-    const apiKey = '519fd420528c41098e670747240902'
+    const apiKey = 'b780a5daf51149f793b22603242503'
     //const DEFAULT_LOCATION = { latitude: 37.7749, longitude: -122.4194 }; // Default location (San Francisco)
     
 
@@ -91,7 +91,7 @@ const WeatherScreen = ({ navigation }) => {
 
     const fetchDailyForecast = async () => {
         try{
-            const baseDailyUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchCity}&days=5&aqi=no&alerts=no`
+            const baseDailyUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchCity}&days=3`
             const res = await axios.get(baseDailyUrl)
             console.log('Daily: ' + res.data)
             setForecastData(res.data)

@@ -19,8 +19,8 @@ const WeatherDescription = ({ onPress, weatherData}) => {
                 <FontAwesome5 name="temperature-low" size={15} color={color.white}/>
                 <Text style = {styles.headingText}>Feels Like</Text>
             </View>
-            <Text style={styles.degreeText}>{weatherData.current?.feelslike_f}</Text>
-            <Text style={styles.Text}>{weatherData.current?.condition?.text}</Text>
+            <Text style={styles.degreeText}>{weatherData.current.feelslike_f}</Text>
+            <Text style={styles.Text}>{weatherData.current.condition.text}</Text>
         </View>
         <TouchableOpacity onPress={onPress}>
         <View style={styles.container}>
