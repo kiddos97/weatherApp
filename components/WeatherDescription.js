@@ -4,7 +4,14 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import color from '../config/color';
 
-const WeatherDescription = ({ onPress}) => {
+
+const decimalToDMS = (decimal) => {
+    const degrees = Math.floor(decimal);// Round to 2 decimal places
+
+
+    return `${degrees}° `;
+  };
+const WeatherDescription = ({ onPress, weatherData}) => {
   return (
         <View style={styles.bigContainer}>
         <View style={styles.container}>
@@ -12,8 +19,8 @@ const WeatherDescription = ({ onPress}) => {
                 <FontAwesome5 name="temperature-low" size={15} color={color.white}/>
                 <Text style = {styles.headingText}>Feels Like</Text>
             </View>
-            <Text style={styles.degreeText}>60</Text>
-            <Text style={styles.Text}>Wind makes it feel colder</Text>
+            <Text style={styles.degreeText}>{weatherData.current?.feelslike_f}</Text>
+            <Text style={styles.Text}>{weatherData.current?.condition?.text}</Text>
         </View>
         <TouchableOpacity onPress={onPress}>
         <View style={styles.container}>
@@ -21,8 +28,8 @@ const WeatherDescription = ({ onPress}) => {
                 <Ionicons name="water" size={15} color={color.white}/>
                 <Text style = {styles.headingText}>Precipitation</Text>
             </View>
-            <Text style={styles.degreeText}>60</Text>
-            <Text style={styles.Text}>Light Rain expected in a few hours</Text>
+            <Text style={styles.degreeText}>{decimalToDMS(weatherData.current?.condition.precip_mm)}</Text>
+            <Text style={styles.Text}>{weatherData.current?.condition?.text}</Text>
         </View>
         </TouchableOpacity>
         </View>

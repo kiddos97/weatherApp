@@ -3,6 +3,13 @@ import { SafeAreaView, View, Text, StyleSheet,Image } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import color from '../../config/color';
+
+const decimalToDMS = (decimal) => {
+    const degrees = Math.floor(decimal);// Round to 2 decimal places
+
+
+    return `${degrees}° `;
+  };
 const WeatherCard = ({Day, weather, HiTemp, lowTemp, width,iconURL}) => {
   return (
   
@@ -14,8 +21,8 @@ const WeatherCard = ({Day, weather, HiTemp, lowTemp, width,iconURL}) => {
             </View>
             <Text style={styles.weatherText}>{weather}</Text>
             <View style={styles.tempContainer}>
-                <Text style={styles.text}>{'HI: '+ HiTemp}</Text>
-                <Text style={styles.text}>{'Low: '+ lowTemp}</Text>
+                <Text style={styles.text}>{'HI: '+ decimalToDMS(HiTemp)}</Text>
+                <Text style={styles.text}>{'Low: '+ decimalToDMS(lowTemp)}</Text>
             </View>
         </View>
  
