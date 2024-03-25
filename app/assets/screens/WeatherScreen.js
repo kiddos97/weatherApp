@@ -133,7 +133,7 @@ const WeatherScreen = ({ navigation }) => {
                                 {weatherData && <WeatherDescription weatherData={weatherData} onPress={() => navigation.navigate('Rain')}/>}
                                 </View>
                                 <View style={styles.windContainer}>
-                                    {weatherData && <WindDescription weatherData={weatherData} onPress={() => navigation.navigate("Wind")}/>}
+                                    {weatherData && <WindDescription weatherData={weatherData} onPress={() => navigation.navigate("Wind",{searchCity})}/>}
                                     </View>
                                     <View style={styles.container}>
                                 {weatherData && <VisiblityHumidity weatherData={weatherData}/>}

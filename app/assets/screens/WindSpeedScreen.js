@@ -1,10 +1,19 @@
-import React from 'react'
-import { ImageBackground, SafeAreaView, Text, View,StyleSheet,Platform, StatusBar} from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ImageBackground, SafeAreaView, Text, View,StyleSheet,Platform, StatusBar, ActivityIndicator} from 'react-native'
 import MapView, { Marker} from 'react-native-maps';
 import color from '../../../config/color';
 import Feather from 'react-native-vector-icons/Feather';
+import * as Location from 'expo-location'
+import { useNavigation, useRoute } from '@react-navigation/native';
 
-const WindSpeedScreen = ({weatherData}) => {
+
+
+const WindSpeedScreen = () => {
+
+  const route = useRoute();
+
+
+
   return (
     <ImageBackground
     style={styles.screen}
@@ -33,7 +42,7 @@ const WindSpeedScreen = ({weatherData}) => {
                               <View style={styles.iconContainer}>
                                 <Feather name="wind" color={color.white} size={30}/>
                               </View>
-                              <Text style={styles.direction}>4 - 15 mph</Text>
+                              <Text style={styles.direction}>{route.params?.searchCity}</Text>
                                 </View>
                             </View>
                           </View>

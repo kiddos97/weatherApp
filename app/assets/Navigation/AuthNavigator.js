@@ -7,7 +7,7 @@ import RainVolumeScreen from '../screens/RainVolumeScreen';
 
 
 
-const AuthNavigator = () => {
+const AuthNavigator = ({weatherData}) => {
     const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator>
