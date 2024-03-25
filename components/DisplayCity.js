@@ -29,7 +29,7 @@ const DisplayCity = ({ weatherData}) => {
                     {weatherData.current?.condition?.text}
                 </Text>
                 <View style={styles.tempContainer}>
-                    <Text style={styles.tempText}>{'Wind: '+ weatherData.current?.wind_mph+'mph'}</Text>
+                    <Text style={styles.tempText}>{'Wind: '+ weatherData.current?.wind_mph+' mph'}</Text>
                     <Text style={styles.tempText}>{'Wind Direction: '+ weatherData.current?.wind_dir}</Text>
                 </View>
             </View>

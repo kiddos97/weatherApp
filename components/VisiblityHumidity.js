@@ -4,6 +4,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import color from '../config/color';
 
+const perecentage = () => {
+
+}
+
+
 const VisiblityHumidity = ({weatherData}) => {
     return (
         <View style={styles.bigContainer}>
@@ -12,16 +17,16 @@ const VisiblityHumidity = ({weatherData}) => {
                 <MaterialIcons name="visibility" size={15} color={color.white}/>
                 <Text style = {styles.headingText}>Visibility</Text>
             </View>
-            <Text style={styles.degreeText}>18 mi</Text>
-            <Text style={styles.Text}>Perfectly clear view</Text>
+            <Text style={styles.degreeText}>{weatherData.current?.vis_miles + ' mi'}</Text>
+            <Text style={styles.Text}>{weatherData.current?.condition?.text}</Text>
         </View>
         <View style={styles.container}>
             <View style={styles.iconContainer}>
                 <MaterialCommunityIcons name="weather-partly-rainy" size={15} color={color.white}/>
                 <Text style = {styles.headingText}>Humidity</Text>
             </View>
-            <Text style={styles.degreeText}>60%</Text>
-            <Text style={styles.Text}>The dew point is 46 right now</Text>
+            <Text style={styles.degreeText}>{weatherData.current?.humidity + ' %'}</Text>
+            <Text style={styles.Text}>{weatherData.current?.condition?.text}</Text>
         </View>
         </View>
     
