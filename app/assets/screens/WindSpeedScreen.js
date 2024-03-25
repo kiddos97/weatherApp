@@ -3,7 +3,8 @@ import { ImageBackground, SafeAreaView, Text, View,StyleSheet,Platform, StatusBa
 import MapView, { Marker} from 'react-native-maps';
 import color from '../../../config/color';
 import Feather from 'react-native-vector-icons/Feather';
-const WindSpeedScreen = () => {
+
+const WindSpeedScreen = ({weatherData}) => {
   return (
     <ImageBackground
     style={styles.screen}

@@ -3,7 +3,7 @@ import { SafeAreaView, View, Text, StyleSheet,Image, TouchableOpacity } from 're
 import Feather from 'react-native-vector-icons/Feather';
 import color from '../config/color';
 
-const WindDescription = ({ onPress }) => {
+const WindDescription = ({ onPress, weatherData }) => {
   return (
      <TouchableOpacity onPress={onPress}>
          <View style={styles.container}>
@@ -17,7 +17,7 @@ const WindDescription = ({ onPress }) => {
           <View style ={ styles.windspeed}>
             <View style ={styles.containerSpeed}>
                 <Text style={styles.speed}>
-                    13
+                    {weatherData.current?.wind_mph}
                 </Text>
                 </View>
             <View>
@@ -30,7 +30,7 @@ const WindDescription = ({ onPress }) => {
           <View style ={ styles.windspeed}>
             <View style ={styles.containerSpeed}>
                 <Text style={styles.speed}>
-                    27
+                    {weatherData.current?.gust_mph}
                 </Text>
                 </View>
             <View>
@@ -57,12 +57,13 @@ const styles = StyleSheet.create({
       borderColor:color.white,
       borderWidth:2,
       borderRadius:35,
-      justifyContent:'space-between',
+      justifyContent:'space-evenly',
       backgroundColor:'rgba(0,0,0,0.5)',
       shadowOpacity: 1,
       shadowRadius: 2.5,
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 20},
+      
     },
     row: {
       flexDirection: 'row', // Align items horizontally
@@ -102,7 +103,8 @@ const styles = StyleSheet.create({
     },
     imageContainer:{
       justifyContent:'center',
-       alignItems:'flex-end'
+       alignItems:'flex-end',
+       width: '50px'
      },
      text:{
         fontSize:15,
