@@ -66,7 +66,6 @@ const WeatherScreen = ({ navigation }) => {
         let latitude = location.latitude
         let longitude =  location.longitude
         const baseURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}`
-        //const baseURL =`https://api.tomorrow.io/v4/weather/realtime?location=${latitude},${longitude}&units=imperial&apikey=${apiKey}`
         const res = await axios.get(baseURL)
         console.log(res.data)
         setWeatherData(res.data)
@@ -80,7 +79,6 @@ const WeatherScreen = ({ navigation }) => {
         try{
        
             const baseCityUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchCity}`
-            //const baseCityUrl = `https://api.tomorrow.io/v4/weather/realtime?location=${searchCity}&units=imperial&apikey=${apiKey}`;
             const res = await axios.get(baseCityUrl)
             console.log(res.data)
             setWeatherData(res.data)
